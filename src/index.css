@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Hind+Siliguri:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", ui-serif, Georgia, serif;
+  --font-bengali: "Hind Siliguri", sans-serif;
+
+  --color-cafe-espresso: #1a0f0a;
+  --color-cafe-amber: #c87941;
+  --color-cafe-cream: #f5efe6;
+  --color-cafe-gold: #d4a853;
+  --color-cafe-white: #fdf6ee;
+  --color-cafe-dark: #0d0805;
+  --color-cafe-darker: #0d0805;
+  --color-cafe-surface: #140b06;
+
+  --animate-float: float 4s ease-in-out infinite;
+  --animate-steam: steam 4s linear infinite;
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+
+  @keyframes steam {
+    0% { transform: translateY(0) scale(1); opacity: 0; }
+    20% { opacity: 0.5; }
+    100% { transform: translateY(-100px) scale(2); opacity: 0; }
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    @apply bg-cafe-dark text-cafe-cream;
+  }
+
+  body {
+    @apply overflow-x-hidden;
+  }
+}
+
+.is-lite {
+  --font-serif: "Playfair Display", serif;
+  /* Disable heavy shadows and filters */
+  * {
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+  }
+  .glass, .glass-amber {
+    @apply bg-cafe-surface;
+  }
+}
+
+.grain-texture {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+.glass {
+  @apply backdrop-blur-md bg-white/20 border border-white/10;
+}
+
+.glass-amber {
+  @apply backdrop-blur-md bg-cafe-amber/10 border border-cafe-amber/20;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-cafe-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-cafe-amber);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-cafe-gold);
+}
