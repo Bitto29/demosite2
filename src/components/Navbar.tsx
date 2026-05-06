@@ -6,6 +6,7 @@ import { cn } from "@/src/lib/utils";
 
 const navLinks = [
   { name: "Home", bn: "হোম", href: "/" },
+  { name: "About", bn: "আমাদের সম্পর্কে", href: "/about" },
   { name: "Menu", bn: "মেনু", href: "/menu" },
   { name: "Gallery", bn: "গ্যালারি", href: "/gallery" },
   { name: "Contact", bn: "যোগাযোগ", href: "/contact" },
@@ -31,8 +32,8 @@ export const Navbar = () => {
       transition={{ delay: 1, duration: 0.8 }}
       className={cn(
         "fixed top-0 left-0 w-full z-50 transition-all duration-500 py-6 px-6 md:px-12",
-        (isScrolled || mobileMenuOpen) 
-          ? "bg-cafe-dark/95 backdrop-blur-2xl border-b border-white/5 py-4" 
+        isScrolled 
+          ? "bg-cafe-dark/90 backdrop-blur-xl border-b border-white/5 py-4" 
           : "bg-transparent"
       )}
     >

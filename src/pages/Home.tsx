@@ -26,6 +26,29 @@ const Home = () => {
     <PageTransition>
       <Hero />
       
+      {/* About Teaser */}
+      <section className="bg-cafe-espresso py-24 border-y border-white/5">
+        <div className="container mx-auto px-6 text-center">
+          <span className="text-cafe-amber tracking-[0.3em] uppercase text-sm font-semibold mb-6 block">
+            The Philosophy
+          </span>
+          <h2 className="text-3xl md:text-5xl font-serif text-cafe-cream mb-8 italic">
+          "আমরা শুধু কফি বানাই না, আমরা মুহূর্ত তৈরি করি।"
+          </h2>
+          <p className="text-cafe-cream/40 uppercase tracking-[0.3em] text-[10px] max-w-sm mx-auto mb-10">
+            A sanctuary for the soul. <br />
+            Crafted for the curious.
+          </p>
+          <Link 
+            to="/about" 
+            className="inline-flex items-center gap-3 text-cafe-amber font-sans font-medium uppercase tracking-widest text-sm hover:text-cafe-gold transition-colors"
+          >
+            Read Our Story
+            <span className="text-xl">→</span>
+          </Link>
+        </div>
+      </section>
+
       {/* Menu Preview */}
       <section className="bg-cafe-dark py-24">
         <div className="container mx-auto px-6 text-center mb-16">

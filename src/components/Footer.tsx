@@ -17,6 +17,7 @@ export const Footer = () => {
           <div className="flex items-center gap-8 mb-12 flex-wrap justify-center">
             {[
               { name: "Home", href: "/" },
+              { name: "About", href: "/about" },
               { name: "Menu", href: "/menu" },
               { name: "Gallery", href: "/gallery" },
               { name: "Contact", href: "/contact" },

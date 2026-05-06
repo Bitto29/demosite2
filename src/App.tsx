@@ -14,6 +14,7 @@ import { ScrollToTop } from "./components/ScrollToTop";
 
 // Pages
 import Home from "./pages/Home";
+import AboutPage from "./pages/AboutPage";
 import MenuPage from "./pages/MenuPage";
 import GalleryPage from "./pages/GalleryPage";
 import ContactPage from "./pages/ContactPage";
@@ -26,6 +27,7 @@ const AnimatedRoutes = () => {
       <div key={location.pathname}>
         <Routes location={location}>
           <Route path="/" element={<Home />} />
+          <Route path="/about" element={<AboutPage />} />
           <Route path="/menu" element={<MenuPage />} />
           <Route path="/gallery" element={<GalleryPage />} />
           <Route path="/contact" element={<ContactPage />} />

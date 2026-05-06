@@ -44,6 +44,13 @@ export const Hero = () => {
             >
               Menu
             </Link>
+            <Link 
+              to="/about"
+              className="text-cafe-cream/60 hover:text-cafe-amber text-[10px] uppercase tracking-[0.2em] transition-colors flex items-center gap-2 group"
+            >
+              Story 
+              <span className="group-hover:translate-x-1 transition-transform">→</span>
+            </Link>
           </div>
         </motion.div>
 
