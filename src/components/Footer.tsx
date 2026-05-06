@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Instagram, Facebook, Twitter } from "lucide-react";
 
 export const Footer = () => {
@@ -6,22 +7,27 @@ export const Footer = () => {
     <footer className="bg-cafe-dark pt-24 pb-12 border-t border-white/5">
       <div className="container mx-auto px-6">
         <div className="flex flex-col items-center text-center">
-          <a href="#home" className="text-4xl font-serif italic text-cafe-cream mb-4">
+          <Link to="/" className="text-4xl font-serif italic text-cafe-cream mb-4">
             Demo Cafe
-          </a>
-          <p className="text-cafe-amber tracking-[0.2em] uppercase text-[10px] font-semibold mb-12">
-            কৌতূহলীদের জন্য তৈরি — Crafted for the Curious
+          </Link>
+          <p className="text-cafe-amber tracking-[0.2em] uppercase text-xs font-semibold mb-12">
+            Crafted for the Curious
           </p>
 
-          <div className="flex items-center gap-8 mb-12">
-            {["Home", "About", "Menu", "Gallery", "Contact"].map((link) => (
-              <a 
-                key={link} 
-                href={`#${link.toLowerCase()}`}
+          <div className="flex items-center gap-8 mb-12 flex-wrap justify-center">
+            {[
+              { name: "Home", href: "/" },
+              { name: "Menu", href: "/menu" },
+              { name: "Gallery", href: "/gallery" },
+              { name: "Contact", href: "/contact" },
+            ].map((link) => (
+              <Link 
+                key={link.name} 
+                to={link.href}
                 className="text-cafe-cream/60 hover:text-cafe-amber transition-colors text-sm uppercase tracking-widest"
               >
-                {link}
-              </a>
+                {link.name}
+              </Link>
             ))}
           </div>
 

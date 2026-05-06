@@ -61,9 +61,8 @@ export const Gallery = () => {
               Feel the <span className="italic">Vibe</span>
             </h2>
           </div>
-          <p className="text-cafe-cream/50 max-w-sm font-sans mb-2">
-            A sanctuary designed for focus, conversation, and the appreciation 
-            of fine craftsmanship.
+          <p className="text-cafe-cream/30 uppercase tracking-[0.2em] text-[10px] max-w-xs mb-2 leading-loose">
+            A sanctuary designed for focus and the appreciation of fine craftsmanship.
           </p>
         </div>
 

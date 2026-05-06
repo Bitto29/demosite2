@@ -3,79 +3,68 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useEffect } from "react";
-import { HashRouter as Router, Routes, Route, useLocation } from "react-router-dom";
-import { AnimatePresence, motion } from "motion/react";
+import React, { useState } from "react";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { AnimatePresence } from "motion/react";
 import { LoadingScreen } from "./components/LoadingScreen";
 import { CustomCursor } from "./components/CustomCursor";
 import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
-import { usePerformance } from "./hooks/usePerformance";
+import { ScrollToTop } from "./components/ScrollToTop";
 
 // Pages
-import Home from "./pages/HomePage";
-import AboutPage from "./pages/AboutPage";
+import Home from "./pages/Home";
 import MenuPage from "./pages/MenuPage";
 import GalleryPage from "./pages/GalleryPage";
 import ContactPage from "./pages/ContactPage";
 
-const ScrollToTop = () => {
-  const { pathname } = useLocation();
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
-  return null;
-};
-
-const PageTransition = ({ children, reduceMotion }: { children: React.ReactNode, reduceMotion: boolean }) => (
-  <motion.div
-    initial={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 20 }}
-    animate={{ opacity: 1, y: 0 }}
-    exit={{ opacity: 0 }}
-    transition={{ duration: reduceMotion ? 0.4 : 0.8, ease: "easeOut" }}
-  >
-    {children}
-  </motion.div>
-);
-
-const AppRoutes = ({ reduceMotion }: { reduceMotion: boolean }) => {
+const AnimatedRoutes = () => {
   const location = useLocation();
+  
   return (
     <AnimatePresence mode="wait">
-      <Routes location={location} key={location.pathname}>
-        <Route path="/" element={<PageTransition reduceMotion={reduceMotion}><Home /></PageTransition>} />
-        <Route path="/about" element={<PageTransition reduceMotion={reduceMotion}><AboutPage /></PageTransition>} />
-        <Route path="/menu" element={<PageTransition reduceMotion={reduceMotion}><MenuPage /></PageTransition>} />
-        <Route path="/gallery" element={<PageTransition reduceMotion={reduceMotion}><GalleryPage /></PageTransition>} />
-        <Route path="/contact" element={<PageTransition reduceMotion={reduceMotion}><ContactPage /></PageTransition>} />
-      </Routes>
+      <div key={location.pathname}>
+        <Routes location={location}>
+          <Route path="/" element={<Home />} />
+          <Route path="/menu" element={<MenuPage />} />
+          <Route path="/gallery" element={<GalleryPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+        </Routes>
+      </div>
     </AnimatePresence>
   );
 };
 
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);
-  const { isLiteMode, reduceMotion } = usePerformance();
 
   return (
-    <Router>
-      <div className={`relative selection:bg-cafe-amber selection:text-cafe-dark font-sans ${isLiteMode ? 'is-lite' : ''}`}>
-        <div className="grain-texture !opacity-[0.03]" />
-        {!isLiteMode && <CustomCursor />}
+    <BrowserRouter>
+      <div className="relative selection:bg-cafe-amber selection:text-cafe-dark">
         <ScrollToTop />
+        <div className="grain-texture" />
+        <CustomCursor />
         
         {isLoading ? (
           <LoadingScreen onComplete={() => setIsLoading(false)} />
         ) : (
-          <>
+          <div className="flex flex-col min-h-screen">
             <Navbar />
-            <AppRoutes reduceMotion={reduceMotion} />
+            <main className="flex-grow">
+              <AnimatedRoutes />
+            </main>
             <Footer />
-          </>
+          </div>
         )}
+
+        <style dangerouslySetInnerHTML={{ __html: `
+          @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+          }
+        `}} />
       </div>
-    </Router>
+    </BrowserRouter>
   );
 }
-
 

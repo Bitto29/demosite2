@@ -1,10 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Hind+Siliguri:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 @import "tailwindcss";
 
 @theme {
   --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
   --font-serif: "Playfair Display", ui-serif, Georgia, serif;
-  --font-bengali: "Hind Siliguri", sans-serif;
 
   --color-cafe-espresso: #1a0f0a;
   --color-cafe-amber: #c87941;
@@ -38,18 +37,6 @@
 
   body {
     @apply overflow-x-hidden;
-  }
-}
-
-.is-lite {
-  --font-serif: "Playfair Display", serif;
-  /* Disable heavy shadows and filters */
-  * {
-    box-shadow: none !important;
-    backdrop-filter: none !important;
-  }
-  .glass, .glass-amber {
-    @apply bg-cafe-surface;
   }
 }
 
